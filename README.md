@@ -145,7 +145,6 @@ Your live website will automatically update when you push changes!
 Before submitting, make sure you've:
 - [ ] Customized `_quarto.yml` with your name
 - [ ] Updated `index.qmd` with your information
-- [ ] Completed Week 1 notes
 - [ ] Enabled GitHub Pages
 - [ ] Verified your website loads correctly
 - [ ] Submitted your URL to Canvas
