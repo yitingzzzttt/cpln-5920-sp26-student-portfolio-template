@@ -70,15 +70,15 @@ This step makes your portfolio visible as a live website!
 
 You can work entirely online, but I don't suggest it. To work on your computer 
 and see changes before publishing, you will use either use GitHub Desktop 
-or the terminal in RStudio (there are some other ways, too, but these are the
-easiest). You may be most comfortable with GitHub Desktop at first, but
+or the terminal in RStudio (there are some other ways, too, but these are probably
+the easiest). You may be most comfortable with GitHub Desktop at first, but
 eventually you will probably find it faster to use the terminal.
 
 In the terminal, this is some relevant code:
 
 ### Clone Your Repository
 ```bash
-# Replace [your-repo-url] with your actual repository URL
+# Replace [your-repo-url] with your actual repository URL. Not your website, but the github repo.
 git clone [your-repo-url]
 cd [your-repository-name]
 ```
