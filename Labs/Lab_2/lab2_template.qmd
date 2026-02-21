@@ -82,7 +82,6 @@ Use `tidycensus` to download tract-level demographic data for Pennsylvania.
 ```{r}
 # Get demographic data from ACS
 library(tidycensus)
-census_api_key("577f52cafa8132078e715d2f9f7321573a862bd1", install = TRUE)
 vars <- c(
   total_pop = "B01001_001",     
   med_income = "B19013_001",    
