@@ -12,6 +12,8 @@ website:
        menu:
        - href: Labs/Lab_1/lab1_template.qmd
          text: Lab 1
+       - href: Labs/Lab_2/lab2_template.qmd
+         text: Lab 2
         
 format:
   html:
