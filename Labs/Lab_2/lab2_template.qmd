@@ -36,7 +36,11 @@ execute:
 Your analysis should identify counties that should be priorities for healthcare investment and policy intervention.
 
 **Your Task:**
-```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| results: hide
 library(sf)         
 library(tidyverse)  
 library(tigris)
@@ -48,16 +52,23 @@ pa_hospitals<-st_read("C:/Users/yzhon/OneDrive - PennO365/Penn-Spring 2026/CPLN 
 ```
 
 **Questions to answer:**
+
 - How many hospitals are in your dataset?
-223
+
+  223
+
 
 - How many census tracts?
-3445
+
+  3445
+
 
 - What coordinate reference system is each dataset in?
-pa_hospitals=WGS 84 ,"EPSG",4326
-pa_tracts=NAD83,"EPSG",4269
-pa_counties=WGS 84,"EPSG",3857
+
+  pa_hospitals=WGS 84 ,"EPSG",4326
+  pa_tracts=NAD83,"EPSG",4269
+  pa_counties=WGS 84,"EPSG",3857
+  
 ---
 
 #### Step 2: Get Demographic Data 
@@ -99,12 +110,20 @@ pa_tracts_with_data <- pa_tracts %>%
 ```
 
 **Questions to answer:**
+
 - What year of ACS data are you using?
-2022
+
+  2022
+
 - How many tracts have missing income data?
-62
+
+  62
+
 - What is the median income across all PA census tracts?
-70188
+
+  70188
+
+
 ---
 
 #### Step 3: Define Vulnerable Populations 
@@ -135,17 +154,23 @@ pa_vulnerable_populations <- pa_valid_data %>%
 ```
 
 **Questions to answer:**
+
 - What income threshold did you choose and why?
-55924, I use the 75% quantile. quantile(pa_valid_data$elderly_pct,0.25, na.rm = TRUE)
+
+  55924, I use the 75% quantile. quantile(pa_valid_data$elderly_pct,0.25, na.rm = TRUE)
 
 - What elderly population threshold did you choose and why?
-37.7, I found that the 75th percentile is approximately 25%. This means this threshold helps me identify the top 25% of communities with the highest aging levels across the state. quantile(pa_valid_data$elderly_pct,0.75, na.rm = TRUE)
+
+  37.7, I found that the 75th percentile is approximately 25%. This means this threshold helps me identify the top 25% of communities with the highest aging levels across the state. quantile(pa_valid_data$elderly_pct,0.75, na.rm = TRUE)
 
 - How many tracts meet your vulnerability criteria?
-209
+  
+  209
 
 - What percentage of PA census tracts are considered vulnerable by your definition?
-209/3445=6.07%
+
+  209/3445=6.07%
+  
 ---
 
 #### Step 4: Calculate Distance to Hospitals 
@@ -165,14 +190,19 @@ pa_vulnerable_projected$dist_to_hospital_miles <- as.numeric(apply(distance, 1, 
 ```
 
 **Questions to answer:**
+
 - What is the average distance to the nearest hospital for vulnerable tracts?
-3.538635
+
+  3.538635
 
 - What is the maximum distance?
-19.15822
+
+  19.15822
 
 - How many vulnerable tracts are more than 15 miles from the nearest hospital?
-7
+  
+  7
+  
 ---
 
 #### Step 5: Identify Underserved Areas 
@@ -188,6 +218,7 @@ pa_vulnerable_projected<- pa_vulnerable_projected %>%
 ```
 
 **Questions to answer:**
+
 - How many tracts are underserved?
 7
 
@@ -223,14 +254,19 @@ county_summary <- vulnerable_with_county %>%
 ```
 
 **Questions to answer:**
+
 - Which 5 counties have the highest percentage of underserved vulnerable tracts?
-Forest County, 	Juniata County, Monroe County, Sullivan County,Dauphin County
+
+  Forest County, 	Juniata County, Monroe County, Sullivan County,Dauphin County
 
 - Which counties have the most vulnerable people living far from hospitals?
-Forest County
+  
+  Forest County
 
 - Are there any patterns in where underserved counties are located?
-Underserved counties are primarily concentrated in the rural, mountainous central and northern regions of PA, where low population density leads to sparse hospital coverage.
+  
+  Underserved counties are primarily concentrated in the rural, mountainous central and northern regions of PA, where low population density leads to sparse hospital coverage.
+
 ---
 
 #### Step 7: Create Summary Table 
@@ -381,7 +417,7 @@ ggplot(data = pa_vulnerable_projected, aes(x = dist_to_hospital_miles)) +
 
 #### Environmental Justice
 
-**Option C: Green Space Equity** 
+**Green Space Equity** 
 - **Data:** Parks, Street Trees, Census tracts (race/income demographics)
 - **Question:** "Do low-income and minority neighborhoods have equitable access to green space?"
 
@@ -410,20 +446,26 @@ summary(phily_Recreation)
 ```
 
 **Questions to answer:**
+
 - What dataset did you choose and why?
-I used PPR_Properties.geojson,I selected this to analyze green space equity (Option C), as access to public parks is a crucial indicator of public health and urban environmental quality.
+
+  I used PPR_Properties.geojson,I selected this to analyze green space equity (Option C), as access to public parks is a crucial indicator of public health and urban environmental quality.
 
 - What is the data source and date?
-The data is sourced from OpenDataPhilly, not sure the exact date.
+  
+  The data is sourced from OpenDataPhilly, not sure the exact date.
 
 - How many features does it contain?
-504
+
+  504
 
 - What CRS is it in? Did you need to transform it?
-4326,yes, I change to 2272(PA south).
+  
+  4326,yes, I change to 2272(PA south).
+  
 ---
 
-2. **Pose a research question*
+2. **Pose a research question**
 
 Do vulnerable census tracts in Philadelphia have equitable walking access to public parks and green spaces?
 
@@ -495,11 +537,13 @@ park_access_summary %>%
 ```
 
 **Your interpretation:**
+
 Based on the spatial analysis, basic park accessibility in Philadelphia is exceptionally high. The summary statistics reveal that 95.6% of census tracts enjoy "Excellent Walkability", being located within a 0.5-mile radius of a recreation property.However, the map highlights specific spatial gaps primarily in the extreme southern and far northeastern edges of the city. From a planning perspective, these are largely driven by distinct land-use patterns: the deep south is dominated by industrial zones and the Philadelphia International Airport (where residential population is minimal), while the Far Northeast features a more suburban, auto-oriented built environment where residents often have access to private yards, reducing the historical demand for dense public pocket parks. Overall, the city demonstrates strong spatial equity in baseline park access.
 
 
 ## Finally - A few comments about your incorporation of feedback!
-Take a few moments to clean up your markdown document and then write a line or two or three about how you may have incorporated feedback that you received after your first assignment. 
+
 I clean up the template,and use echo:false to hide all the library set up code.I avoid using print() and head()this time.
+
 ---
 
