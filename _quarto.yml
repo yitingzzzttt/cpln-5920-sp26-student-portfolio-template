@@ -14,7 +14,8 @@ website:
          text: Lab 1
        - href: Labs/Lab_2/lab2_template.qmd
          text: Lab 2
-        
+       - href: Labs/Lab_4/lab_4.qmd
+         text: Lab 4
 format:
   html:
     theme: cosmo
