@@ -295,6 +295,11 @@ results %>%
     digits = 2
   )
 
+avg_results <- data.frame(
+  Metric = c("MAE", "RMSE"),
+  Value = colMeans(results[, c("mae", "rmse")], na.rm = TRUE)
+)
+
 avg_results %>%
   kable(
     caption = "Average Prediction Error Across All Groups",
