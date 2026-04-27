@@ -18,6 +18,8 @@ website:
          text: Lab 4
        - href: Labs/Lab_5/Lab_5.qmd
          text: Lab 5
+       - href: Labs/Final Challenge/Eviction Slide.qmd
+         text: Eviction Slide
 format:
   html:
     theme: cosmo
